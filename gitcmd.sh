@@ -2,6 +2,8 @@
 
 git clone git@github.com:dotkiwis/dotsite.git # clone the repo from web
 
+git checkout "yourbranch" # switch to your branch
+
 git branch # print the current branch
 
 git status # check add/delete status of current branch
