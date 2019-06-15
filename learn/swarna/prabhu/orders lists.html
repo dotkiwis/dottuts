@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    
+    </head>
+  
+
+      <!-- <p>This is another paragraph.</p>
+
+      <ol>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+      </ol>
+      <form>
+        <form action="/action_page.php">
+          Value:<br>
+          <input type="text" name="firstname" value=" ">
+          <br>
+          Name:<br>
+          <input type="text" name="lastname" value=" ">
+          <br><br>
+        </form>
+
+      </form>
+
+      <button id="btn2">Submit</button> -->
+
+      <ol id="messagebox">
+          <li>first  </li>
+          <li>second  </li>
+          <li>Third  </li>
+      </ol>
+          
+          <div>
+          <input type="text" id="number" maxlength="120" autocomplete="off" /><br>
+          <br>
+          <input type="text" id="name" maxlength="120" autocomplete="off" />
+          <br>
+          <br>
+          <button onclick = "myFunction()">submit </button>
+          </div> 
+<script>
+          function myFunction() {
+var no = document.getElementById("number").value;
+ var nam = document.getElementById("name").value;
+ console.log(no, nam);
+ document.getElementsByTagName("li")[no-1].innerHTML=nam ;
+}
+
+      //  $(document).ready(function(){
+        
+      //   $("#btn2").click(function(){
+      //       $("ol").prepend("<li>list</li>");
+      //     });
+      // });
+//       $(document).ready(function(){
+
+// $('#submit').click(function(){
+//     var message = $('#typetextbox').val();
+//     $('#messagebox').prepend(message + "<br/>");
+// });
+// });
+
+    </script>
+    </body>
+
+
+</body>
+</html>
