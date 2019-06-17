@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
 </head>
 
 <body>
+    
 
   <div class="container">
     <h2>Table</h2>
@@ -106,7 +108,6 @@
 
   <script language="javascript">
     var tbl = document.getElementById("cable");
-    //var values = new Array();
     if (tbl != null) {
       for (var i = 0; i < tbl.rows.length; i++) {
         for (var j = 0; j < tbl.rows[i].cells.length; j++)
@@ -122,19 +123,20 @@
     
     var values = [];
     var bookedTime = [];
-    var bookings  = [{ 
-      date : 1,
-      slots : [false,false,false,false],
-      },{ 
-      date : 2,
-      slots : [false,false,false,false],
-      },{ 
-      date : 3,
-      slots : [false,false,false,false],
-      },{ 
-      date : 4,
-      slots : [false,false,false,false],
-      }]
+    // var bookings  = [{ 
+    //   date : 1,
+    //   slots : [false,false,false,false],
+    //   },{ 
+    //   date : 2,
+    //   slots : [false,false,false,false],
+    //   },{ 
+    //   date : 3,
+    //   slots : [false,false,false,false],
+    //   },{ 
+    //   date : 4,
+    //   slots : [false,false,false,false],
+    //   }]
+     
 
 
     function getval(cel) {
@@ -154,7 +156,7 @@
 
       console.log(x)
       x.innerHTML = cel.innerHTML;
-      var element 
+  
     }
     var gslot;
     var gcurrent;
@@ -178,8 +180,8 @@
 
       document.getElementById("name").value = "";
       document.getElementById("mob").value = "";
-     gcurrent.disabled = true;
-
+      gcurrent.disabled = true;
+      // slots buttons functions 
      if(gslot === 's1'){
       bookings[date-1].slots[0] = true;
      } else if(gslot === 's2'){
