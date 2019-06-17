@@ -1,0 +1,37 @@
+<!DOCtype html>
+<html>
+<head>
+<title> Lists </title>
+<body>
+<div>
+<form>Select your favorite fruit:
+    <select id="mySelect">
+        <option value="a">Apple</option>
+        <option value="o">Orange</option>
+        <option value="p">Pineapple</option>
+        <option value="b">Banana</option>
+    </select>
+</form>
+<button type="button" onclick="displayResult()">Display text of all options</button>
+</div>
+<script>
+function displayResult() {
+    // var x = document.getElementById("mySelect");
+    // var txt = "All options: ";
+    // var i;
+    // for (i = 0; i < x.length; i++) {
+    //     txt = txt + "\n" + x.options[i].value;
+    // }
+    // alert(txt);
+    var x = document.getElementById('mySelect');
+     var txt = "";
+     var val = "";
+     for (var i = 0; i < x.length; i++) {
+         txt +=x[i].text + ",";
+         val +=x[i].value + ",";
+      }
+      console.log (txt,val)
+}
+</script>
+</body>
+</html>

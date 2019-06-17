@@ -54,14 +54,14 @@
     <div id="myDIV">
       <h1 id="dno"></h1>
       <ul class="list-group">
-        <li class="list-group-item">10AM - 11AM <button onclick="popup('s1')" data-toggle="modal"
+        <li class="list-group-item">10AM - 11AM <button id="s1" onclick="popup(this,'s1')" data-toggle="modal"
             data-target="#exampleModal" type="button" class="btn btn-primary">Primary</button></li>
-        <li class="list-group-item">11AM - 12PM <button onclick="popup('s2')" data-toggle="modal"
+        <li class="list-group-item">11AM - 12PM <button id="s2" onclick="popup(this,'s2')" data-toggle="modal"
             data-target="#exampleModal" type="button" class="btn btn-primary">Primary</button></li>
         <li class="list-group-item">Lunch </li>
-        <li class="list-group-item">2PM - 3PM <button onclick="popup('s3')" data-toggle="modal"
+        <li class="list-group-item">2PM - 3PM <button id="s3" onclick="popup(this,'s3')"data-toggle="modal"
             data-target="#exampleModal" type="button" class="btn btn-primary">Primary</button></li>
-        <li class="list-group-item">3PM - 4PM <button onclick="popup('s4')" data-toggle="modal"
+        <li class="list-group-item">3PM - 4PM <button id="s4" onclick="popup(this,'s4')" data-toggle="modal"
             data-target="#exampleModal" type="button" class="btn btn-primary">Primary</button></li>
 
       </ul>
@@ -106,29 +106,62 @@
 
   <script language="javascript">
     var tbl = document.getElementById("cable");
+    //var values = new Array();
     if (tbl != null) {
       for (var i = 0; i < tbl.rows.length; i++) {
         for (var j = 0; j < tbl.rows[i].cells.length; j++)
           tbl.rows[i].cells[j].onclick = function () {
-            getval(this);
+           
+             getval(this);
+
           };
       }
     }
+    
     var date;
+    
+    var values = [];
+    var bookedTime = [];
+    var bookings  = [{ 
+      date : 1,
+      slots : [false,false,false,false],
+      },{ 
+      date : 2,
+      slots : [false,false,false,false],
+      },{ 
+      date : 3,
+      slots : [false,false,false,false],
+      },{ 
+      date : 4,
+      slots : [false,false,false,false],
+      }]
+
 
     function getval(cel) {
-      console.log(cel);
+      date = cel.innerHTML;
+     console.log(bookings[date-1]);  
+     var buttonState = bookings[date-1].slots;
+     console.log(buttonState);
+      document.getElementById('s1').disabled = buttonState[0];
+      document.getElementById('s2').disabled = buttonState[1];
+      document.getElementById('s3').disabled = buttonState[2];
+      document.getElementById('s4').disabled = buttonState[3];
+
+      values.push(cel.innerHTML);
+      console.log(values);
       console.log(cel.innerHTML);
       var x = document.getElementById("dno");
 
       console.log(x)
       x.innerHTML = cel.innerHTML;
-      date = cel.innerHTML;
+      var element 
     }
     var gslot;
+    var gcurrent;
 
-    function popup(slot) {
+    function popup(current,slot) {
       var cbl = document.getElementById("titl");
+      gcurrent = current;
       cbl.innerHTML = date + " " + slot;
       gslot = slot;
       console.log(date, slot);
@@ -139,9 +172,24 @@
       var name = document.getElementById("name").value;
       var mob = document.getElementById("mob").value;
       console.log(date, gslot, name, mob);
+      bookedTime.push(date+"-"+gslot);
+      console.log(bookedTime);
+
 
       document.getElementById("name").value = "";
       document.getElementById("mob").value = "";
+     gcurrent.disabled = true;
+
+     if(gslot === 's1'){
+      bookings[date-1].slots[0] = true;
+     } else if(gslot === 's2'){
+      bookings[date-1].slots[1] = true;
+     }else if(gslot === 's3'){
+      bookings[date-1].slots[2] = true;
+     }else if(gslot === 's4'){
+      bookings[date-1].slots[3] = true;
+     }
+
 
 
     }
