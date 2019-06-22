@@ -14,8 +14,16 @@
 
     <div class="container">
         <h2>Table</h2>
+        <button onclick="myFunction()">Calender</button>
+        <select id="selector"></select>
+        <!-- <select id="monthh" >
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+        </select> -->
         <table id="cable" class="table-bordered table-hover">
             <tr>
+
                 <th>Saturday</th>
                 <th>Sunday</th>
                 <th>Monday</th>
@@ -23,9 +31,10 @@
                 <th>wednesday</th>
                 <th>Thursday</th>
                 <th>Firday</th>
-            </tr>
 
+            </tr>
         </table>
+
         <div id="myDIV">
             <h1 id="dno"></h1>
             <ul class="list-group">
@@ -73,53 +82,73 @@
                     <button type="button" onclick="apply()" data-dismiss="modal" class="btn btn-primary">Submit</button>
                 </div>
 
+
+
             </div>
         </div>
     </div>
     <script language="javascript">
-        var tbl = document.getElementById("cable");
-        if (tbl != null) {
-            for (var i = 0; i < tbl.rows.length; i++) {
-                for (var j = 0; j < tbl.rows[i].cells.length; j++)
-                    tbl.rows[i].cells[j].onclick = function () {
-
-                        getval(this);
-
-                    };
-            }
-        }
-        var values = [];
-        var date;
-
-        var bookings = [];
-
-        for (i = 0; i < 30; i++) {
-            bookings.push({
-                date: i,
-                slots: [false, false, false, false],
-            })
-        }
-
         var year = [{
             month: 1,
             monthName: "June",
             days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
                 26, 27, 28, 29, 30
             ],
+            id: 1,
         }, {
             month: 2,
             monthName: "July",
             days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
-                26, 27, 28, 29, 31
+                26, 27, 28, 29, 30, 31
             ],
+            id :2,
         }, {
             month: 3,
             monthName: "August",
             days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
                 26, 27, 28, 29, 30
             ],
+            id: 3,
         }]
+         
+        var b = 0;
 
+        function myFunction() {
+            var table = document.getElementById("cable");
+            var a = year[1].days;
+            for (i = 0; i < a.length / 7; i++) {
+                var row = table.insertRow(i);
+                if (i < (a.length / 7) - 1) {
+                    for (j = 0; j < 7; j++) {
+                        console.log("i", i, "j", j, "i+j", i + j, "b", b)
+                        var cell1 = row.insertCell(j);
+                        cell1.innerHTML = a[i + j + b];
+                        cell1.onclick = function () {
+
+                            getval(this, monthh);
+
+                        };
+                    }
+                    b += 6;
+                } else {
+                    for (j = 0; j < a.length % 7; j++) {
+                        console.log("i", i, "j", j, "i+j", i + j, "b", b)
+                        var cell1 = row.insertCell(j);
+                        cell1.innerHTML = a[i + j + b];
+                        cell1.onclick = function () {
+
+                            getval(this);
+
+                        };
+
+                    }
+                }
+            }
+        }
+        var values = [];
+        var date;
+
+        var bookings = [];
 
         function getval(cel) {
             date = cel.innerHTML;
@@ -130,7 +159,6 @@
             document.getElementById('s2').disabled = buttonState[1];
             document.getElementById('s3').disabled = buttonState[2];
             document.getElementById('s4').disabled = buttonState[3];
-
             values.push(cel.innerHTML);
             var x = document.getElementById("dno");
 

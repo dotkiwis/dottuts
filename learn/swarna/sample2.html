@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <script>
+        // paragraph
+        function createparagraph() {
+            var x = document.createElement("p");
+            var t = document.createTextNode("Paragraph is created.");
+            x.appendChild(t);
+            document.body.appendChild(x);
+        }
+    </script>
+    <script>
+        // button
+        function myFunction() {
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = "CLICK ME";
+            document.body.appendChild(btn);
+        }
+    </script>
+    <script>
+        // table
+        function addTable() {
+            var table = document.createElement('table');
+            table.innerHTML = "<tr><td>123</td><td>456</td></tr>";
+            document.getElementById("addtable").appendChild(table);
+        }
+    </script>
+    <script>
+        // list 
+        function myMist() {
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode("Water");
+            node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+            document.getElementById("myList").classList.remove("think");
+            
+    </script>
+</head>
+
+<body>
+
+
+    <button onclick="createparagraph()">CreateParagraph</button>
+
+    <p>Click the button to make a BUTTON element with text.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <input type="submit" value="New Table" onClick="addTable()" />
+    <div id="addtable"></div>
+    <button onclick="myMist()">List</button>
+    <ul id="myList" class="think">
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+
+
+    \\ element.classList.add("otherclass")
+    \\ element.classList.remove("other class")
+</body>
+
+</html>
