@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>Calculator</title>
+    <style>
+        input[type="button"] {
+            background-color: green;
+            color: black;
+            border: solid black 2px;
+            width: 100%
+        }
+
+        input[type="text"] {
+            background-color: white;
+            border: solid black 2px;
+            height: 50px;
+            width: 100%
+        }
+
+        ul li {
+            display: inline-block;
+            list-style-type: none;
+        }
+    </style>
+
+
+
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</title>
+
+<body>
+    <center>
+        <table table>
+            <tr>
+                <td colspan="4"><input type="text" id="result" /></td>
+
+            </tr>
+            <tr>
+                <td colspan="2"><input class="w3-button w3-ripple w3-light-grey" type="button" value="c"
+                        onclick="clr()" /></td>
+                <td colspan="1"><input class="w3-button w3-ripple w3-light-grey" type="button" value="sqr"
+                        onclick="squareroot()" /></td>
+                <td colspan="1"><input class="w3-button w3-ripple w3-light-grey" type="button" value="undo"
+                        onclick="back()" /></td>
+
+
+
+            </tr>
+            <tr>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="1" onclick="cal('1')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="2" onclick="cal('2')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="3" onclick="cal('3')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="+" onclick="cal('+')" /></td>
+            </tr>
+            <tr>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="4" onclick="cal('4')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="5" onclick="cal('5')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="6" onclick="cal('6')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="-" onclick="cal('-')" /></td>
+            </tr>
+            <tr>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="7" onclick="cal('7')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="8" onclick="cal('8')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="9" onclick="cal('9')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="*" onclick="cal('*')" /></td>
+            </tr>
+            <tr>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="x" onclick="square('x')" />
+                </td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="0" onclick="cal('0')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="." onclick="cal('.')" /></td>
+                <td><input class="w3-button w3-ripple w3-light-grey" type="button" value="=" onclick="calc('=')" /></td>
+            </tr>
+        </table>
+        <ul>
+            <li id="History">
+                <h4>History:</h4>
+            </li>
+        </ul>
+    </center>
+
+
+    <script>
+        //function that display value 
+        function cal(val) {
+            document.getElementById("result").value += val
+        }
+
+        //function that evaluates the digit and return result 
+        function calc() {
+            let x = document.getElementById("result").value
+            let y = eval(x)
+            document.getElementById("result").value = y
+
+            console.log(x, y)
+
+            document.getElementById("History").append(x + "=" + y);
+            document.getElementById("History").append(document.createElement('br'));
+
+
+
+
+            // var el = document.createElement("h2");
+            // el.innerHTML = x + "=" + y ;
+            // document.getElementById("History").append(el) ;
+        }
+
+        //square
+        function square() {
+            let x = document.getElementById("result").value
+            let z = eval(x * x)
+            document.getElementById("result").value = z
+        }
+
+        //function that clear the display 
+        function clr() {
+            document.getElementById("result").value = ""
+        }
+
+        //function square root
+        function squareroot() {
+            let x = document.getElementById("result").value
+            let n = eval(x)
+            document.getElementById("result").value = Math.sqrt(n)
+        }
+
+        function back() {
+            var value = document.getElementById("result").value;
+            document.getElementById("result").value = value.substr(0, value.length - 1);
+        }
+    </script>
+</body>
+<script>
+
+
+</script>
+
+</html>
