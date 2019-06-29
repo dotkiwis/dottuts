@@ -54,15 +54,15 @@
     <div id="myDIV">
       <h1 id="dno"></h1>
       <ul class="list-group">
-        <li class="list-group-item">10AM - 11AM <button   data-toggle="modal"
-            data-target="#exampleModal" type="button" class="btn btn-primary">Book</button></li>
-        <li class="list-group-item">11AM - 12PM <button  data-toggle="modal"
-            data-target="#exampleModal" type="button" class="btn btn-primary">Book</button></li>
+        <li class="list-group-item">10AM - 11AM <button data-toggle="modal" data-target="#exampleModal" type="button"
+            class="btn btn-primary">Book</button></li>
+        <li class="list-group-item">11AM - 12PM <button data-toggle="modal" data-target="#exampleModal" type="button"
+            class="btn btn-primary">Book</button></li>
         <li class="list-group-item">Lunch </li>
-        <li class="list-group-item">2PM - 3PM <button  data-toggle="modal"
-            data-target="#exampleModal" type="button" class="btn btn-primary">Book</button></li>
-        <li class="list-group-item">3PM - 4PM <button  data-toggle="modal"
-            data-target="#exampleModal" type="button" class="btn btn-primary">Book</button></li>
+        <li class="list-group-item">2PM - 3PM <button data-toggle="modal" data-target="#exampleModal" type="button"
+            class="btn btn-primary">Book</button></li>
+        <li class="list-group-item">3PM - 4PM <button data-toggle="modal" data-target="#exampleModal" type="button"
+            class="btn btn-primary">Book</button></li>
 
       </ul>
     </div>
@@ -116,41 +116,42 @@
     }
 
     var lst = document.getElementById("dno");
-    if (lst !=null){
-      for (var i=0;i < lst.rows[i].index; i++){
-        lst.rows[i].onclick = function() {
-          getval (this)
+    if (lst != null) {
+      for (var i = 0; i < lst.rows[i].index; i++) {
+        lst.rows[i].onclick = function () {
+          getval(this)
         };
 
-      }                                                                   
-   var date;
+      }
+      var date;
 
-    function getval(cel) {
-      console.log(cel);
-      console.log(cel.innerHTML);
-      var x = document.getElementById("dno");
+      function getval(cel) {
+        console.log(cel);
+        console.log(cel.innerHTML);
+        var x = document.getElementById("dno");
 
-      console.log(x)
-      x.innerHTML = cel.innerHTML;
-      date = cel.innerHTML;
-    }
-    var gslot;
+        console.log(x)
+        x.innerHTML = cel.innerHTML;
+        date = cel.innerHTML;
+      }
+      var gslot;
 
-    function popup(slot) {
-      var cbl = document.getElementById("titl");
-      cbl.innerHTML = date + " " + slot;
-      gslot = slot;
-      console.log(date, slot);
-    }
-    
-    function apply() {
+      function popup(slot) {
+        var cbl = document.getElementById("titl");
+        cbl.innerHTML = date + " " + slot;
+        gslot = slot;
+        console.log(date, slot);
+      }
 
-      var name = document.getElementById("name").value;
-      var mob = document.getElementById("mob").value;
-      console.log(date, gslot, name, mob);
+      function apply() {
 
-      document.getElementById("name").value = "";
-      document.getElementById("mob").value = "";
+        var name = document.getElementById("name").value;
+        var mob = document.getElementById("mob").value;
+        console.log(date, gslot, name, mob);
+
+        document.getElementById("name").value = "";
+        document.getElementById("mob").value = "";
+      }
     }
   </script>
 

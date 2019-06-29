@@ -19,10 +19,10 @@
     <table id="cable" class="table-bordered table-hover">
       <thead>
         <tr>
-          <th>sunday</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>wednesday</th>
+          <th>sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>wed</th>
       </thead>
       <tbody>
         <tr>
@@ -114,7 +114,6 @@
           tbl.rows[i].cells[j].onclick = function () {
            
              getval(this);
-
           };
       }
     }
@@ -137,8 +136,6 @@
    slots : [false,false,false,false],
       }]
      
-
-
     function getval(cel) {
       date = cel.innerHTML;
      console.log(bookings[date-1]);  
@@ -148,19 +145,16 @@
       document.getElementById('s2').disabled = buttonState[1];
       document.getElementById('s3').disabled = buttonState[2];
       document.getElementById('s4').disabled = buttonState[3];
-
       values.push(cel.innerHTML);
       console.log(values);
       console.log(cel.innerHTML);
       var x = document.getElementById("dno");
-
       console.log(x)
       x.innerHTML = cel.innerHTML;
   
     }
     var gslot;
     var gcurrent;
-
     function popup(current,slot) {
       var cbl = document.getElementById("titl");
       gcurrent = current;
@@ -168,16 +162,12 @@
       gslot = slot;
       console.log(date, slot);
     }
-
     function apply() {
-
       var name = document.getElementById("name").value;
       var mob = document.getElementById("mob").value;
       console.log(date, gslot, name, mob);
       bookedTime.push(date+"-"+gslot);
       console.log(bookedTime);
-
-
       document.getElementById("name").value = "";
       document.getElementById("mob").value = "";
       gcurrent.disabled = true;
@@ -191,20 +181,49 @@
      }else if(gslot === 's4'){
       bookings[date-1].slots[3] = true;
      }
-
-
-
     }
   </script>
 
 </body>
-
 </html>
-<!--
-    tbl.rows[i].cells[j].onclick = function () { getval(this); };
-            }
-        }
-        function getval(cel) {
-            alert(cel.innerHTML);
-        }
--->
+<?php
+
+
+$json_str = file_get_contents('php://input'); //string
+
+$conn = mysqli_connect("localhost", "root", "", "calender_1"); // func returns boolean
+
+echo var_dump($conn);
+
+if (!$conn) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+
+$data = json_encode($json_str); // object
+
+$date = $data -> date;
+$gslot = $data -> gslot;
+$name = $data -> name;
+$mob = $data -> mob;
+
+echo var_dump($data);
+
+if($date != "" && $slot != ""){
+    // create query string
+   $sql = "INSERT INTO contents(date, gslot, name, mob) VALUES ('" . $date . "','" . $gslot . "','" . $name . "','" . $mobile . "')";
+
+   echo $sql;
+
+    // execute sql
+    if ($conn->query($sql) === TRUE) {
+        echo "Data Succesfully Inserted";
+    } else {
+    //echo mysql_error();
+        echo "Error";
+    }
+} else {
+    echo "Date Can't be null";
+}
+?>
