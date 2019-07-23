@@ -5,121 +5,49 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<style>
-    .numberCircle {
-        border-radius: 50%;
-        behavior: url(PIE.htc);
-        /* remove if you don't care about IE8 */
-        width: 55px;
-        height: 55px;
-        padding: 8px;
-        background: transparent;
-        color: #1f1e1e;
-        text-align: center;
-        font: 32px Arial, sans-serif;
-        display: inline-block
-    }
 
-    .numberCircle:hover {
-        border: 2px solid #666;
-        background: #c2b697;
-    }
-
-    .btn {
-        float: left;
-        margin: 0 100px;
-    }
-
-    .button7 {
-        background-color: #c2b697;
-        border: 2px solid rgb(242, 241, 245);
-        color: #000;
-        padding: 10px 32px;
-        margin: 2px 2px;
-        width: 250px;
-        border: 2px solid #00000f;
-        border-radius: 8px;
-        float: right;
-    }
-
-    td {
-        padding: 20px;
-    }
-
-    th {
-        width: 96px;
-        padding: 20px 0px;
-        text-align: center;
-        color: #fff;
-        font-size: 20px;
-        background: #c2b697;
-    }
-
-    li {
-        height: 80px;
-        font-size: 20px;
-
-    }
-
-    .list-group-item {
-        background: transparent;
-
-    }
-
-    #appoint-list {
-        width: 675px;
-    }
-
-    .cal-head {
-        background: #fff;
-        height: 50px;
-        align-content: center;
-    }
-
-    h5 {
-        background: #8a6d3b;
-        font-size: 30px;
-        font-style:oblique;
-        color: #00000f;
-        text-align: center;
-        
-
-    }
-
-    body {
-        /* background-image: url("https://cdn.slidemodel.com/wp-content/uploads/13081-01-gradient-designs-powerpoint-backgrounds-16x9-1.jpg"); */
-        /* background-color: #cccccc; */
-        background-repeat: no-repeat;
-        background-size: 100%;
-    }
-</style>
 
 <body>
 
     <div class="container">
 
-        <table class="table-bordered ">
-            <tr class="cal-head">
-                <select id="monthh">
-                    <option value="0">Jan</option>
-                    <option value="1">Feb</option>
-                    <option value="2">Mar</option>
-                    <option value="3">Apr</option>
-                    <option value="4">My</option>
-                    <option value="5">June</option>
-                    <option value="6">July</option>
-                    <option value="7">August</option>
-                    <option value="8">Sep</option>
-                    <option value="9">O</option>
-                    <option value="10">N</option>
-                    <option value="11">D</option>
-                </select>
-                <button onclick="myFunction()">Calender</button>
 
+        <table class="table-bordered ">
+
+
+            <tr>
+                <th colspan="1">
+                    <a href="#" id="page-left" onclick="prevMonth()"><i class="fa fa-arrow-left"></i></a>
+                </th>
+
+                <th colspan="6">
+                    <span class="calendarSavingState" style="display: none;">
+                        <i class="booked-icon booked-icon-spinner-clock booked-icon-spin"></i>
+                    </span>
+                    <span class="monthName">
+                        <h3 id="monthYear"></h3>
+                    </span>
+                </th>
+                <th colspan="1">
+                    <a href="#" id="page-right" onclick="nextMonth()"><i class="fa fa-arrow-right"></i></a>
+                </th>
             </tr>
             <tr>
                 <th>Sat</th>
@@ -231,6 +159,10 @@
         </div>
     </div>
     <script language="javascript">
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
         var getDaysInMonth = function (month, year) {
             console.log(month, year)
             return new Date(year, month, 0).getDate();
@@ -241,11 +173,42 @@
             return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
         }
 
-        let currentMonth;
+        function nextMonth() {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear += 1;
+            } else {
+                currentMonth += 1;
+            }
+            myFunction();
+        }
+
+        function prevMonth() {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear -= 1;
+            } else {
+                currentMonth -= 1;
+            }
+            myFunction();
+        }
+
+        const todayDate = new Date();
+        const actualCurrentMonth = todayDate.getMonth();
+        const actualCurrentYear = todayDate.getFullYear();
+
+        let currentMonth = todayDate.getMonth();
+        let currentYear = todayDate.getFullYear();
 
         function myFunction() {
-            currentMonth = document.getElementById("monthh").value;
-            console.log("currentMonth : " + currentMonth)
+            console.log("currentMonth : " + currentMonth, actualCurrentMonth)
+            if (actualCurrentMonth == currentMonth && actualCurrentYear == currentYear) {
+                document.getElementById("page-left").onclick = null;
+            } else {
+                document.getElementById("page-left").onclick = prevMonth;
+            }
+
+            document.getElementById("monthYear").innerHTML = monthNames[currentMonth] + " " + currentYear;
 
             var table = document.getElementById("cable");
             table.innerHTML = "";
@@ -276,38 +239,6 @@
                 b += 6;
 
             }
-
-
-            // for (i = 0; i < a.length / 7; i++) {
-            //     var row = table.insertRow(i);
-            //     if (i < (a.length / 7) - 1 || currentMonth == "1") {
-            //         for (j = 0; j < 7; j++) {
-            //             // console.log("i", i, "j", j, "i+j", i + j, "b", b)
-            //             var cell1 = row.insertCell(j);
-            //             var x = document.createElement("span");
-            //             x.className = 'numberCircle';
-            //             x.innerHTML = a[i + j + b];
-            //             cell1.append(x);
-            //             cell1.onclick = function () {
-            //                 getval(this);
-            //             };
-            //         }
-            //         b += 6;
-            //     } else {
-            //         for (j = 0; j < a.length % 7; j++) {
-            //             // console.log("i", i, "j", j, "i+j", i + j, "b", b)
-            //             var cell1 = row.insertCell(j);
-            //             var x = document.createElement("span");
-            //             x.className = 'numberCircle';
-            //             x.innerHTML = a[i + j + b];
-            //             cell1.append(x);
-            //             cell1.onclick = function () {
-            //                 getval(this);
-            //             };
-
-            //         }
-            //     }
-            // }
         }
         var values = [];
         var date;
@@ -394,7 +325,7 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.response;
+                    document.getElementById("demo").innerHTML = ""; //this.response;
                 }
             };
             xhttp.open("POST", "http://127.0.0.1/db/add_new_appointment.php", true);
@@ -408,7 +339,7 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.response;
+                    document.getElementById("demo").innerHTML = ""; //this.response;
                     bookings = JSON.parse(this.response);
                     console.log(bookings);
                     document.getElementById('s1').disabled = bookings[0];
@@ -429,11 +360,10 @@
             var d = new Date();
             var n = d.getMonth();
 
-            document.getElementById("monthh").value = n;
             myFunction();
         });
     </script>
-    
+
 </body>
 
 </html>

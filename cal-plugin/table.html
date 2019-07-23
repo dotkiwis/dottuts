@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "ajax": "http://ilfdemo.dotkiwis.com/calbackend/getpost.php",
+                    "columns": [{
+                            "data": "id"
+                        },
+                        {
+                            "data": "date"
+                        },
+                        {
+                            "data": "name"
+                        },
+                        {
+                            "data": "slot"
+                        },
+                        {
+                            "data": "mobile"
+                        },
+                        {
+                            "data": "email"
+                        },
+                        {
+                            "data": "message"
+                        },
+                        {
+                            "data": "person"
+                        },
+                        {
+                            "data": "place"
+                        }
+                    ]
+                });
+            });
+        </script>
+        <style>
+            table.dataTable tbody tr:hover {
+                background-color: #c2b697;
+            }
+        </style>
+
+    </head>
+
+<body>
+
+    <table id="example" class="" style="width:100%">
+
+        <thead>
+
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Slot</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Message</th> 
+                <th>Person</th>
+                <th>Place</th>
+            </tr>
+        </thead>
+
+
+    </table>
+</body>
+
+</html>

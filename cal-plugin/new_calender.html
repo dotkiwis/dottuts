@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <table class="table-bordered ">
+
+            <tr>
+                <th colspan="1" class="month-head">
+                    <a href="#" id="page-left" onclick="prevMonth()"><i class="fa fa-arrow-left"></i></a>
+                </th>
+
+                <th colspan="5" class="month-head">
+                    <h2 id="monthYear"></h2>
+                </th>
+                <th colspan="1" class="month-head">
+                    <a href="#" id="page-right" onclick="nextMonth()"><i class="fa fa-arrow-right"></i></a>
+                </th>
+            </tr>
+            <tr>
+                <th>Sat</th>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+            </tr>
+        </table>
+
+        <table id="cable" class="table-bordered ">
+
+        </table>
+
+        <div class="spin-div">
+            <i id="spin" class="spin fa fa-spinner fa-spin" style="display:none;"></i>
+        </div>
+
+        <div id="appoint-list" style="display:none;">
+            <h3 id="dno">
+            </h3>
+            <ul class="list-group">
+                <li class="list-group-item">8AM - 10AM<button id="s1" onclick="popup(this,'s1')" data-toggle="modal"
+                        data-backdrop="false" data-target="#exampleModal" type="button" class="btn button7">Book
+                        Appointment</button></li>
+                <li class="list-group-item">10AM - 12PM <button id="s2" onclick="popup(this,'s2')" data-toggle="modal"
+                        data-backdrop="false" data-target="#exampleModal" type="button" class="btn button7">Book
+                        Appointment</button></li>
+                <!--<li class="list-group-item">Lunch </li>-->
+                <li class="list-group-item">2PM - 4PM <button id="s3" onclick="popup(this,'s3')" data-toggle="modal"
+                        data-backdrop="false" data-target="#exampleModal" type="button" class="btn button7">Book
+                        Appointment</button></li>
+                <li class="list-group-item">4PM - 5PM <button id="s4" onclick="popup(this,'s4')" data-toggle="modal"
+                        data-backdrop="false" data-target="#exampleModal" type="button" class="btn button7 ">Book
+                        Appointment</button></li>
+            </ul>
+        </div>
+        <div>
+            <p id="demo"></p>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="titl">Modal title</h3>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Name* </label>
+                            <input type="text" class="form-control" id="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile*</label>
+                            <input type="text" class="form-control" id="mob" placeholder="Enter only 10 digits">
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail*</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Meeting Person*</label>
+                            <select class="form-control" id="person" placeholder="SelectPerson">
+                                <option value="">Select Person</option>
+                                <option value="Mrs.Vidya">Mrs.Vidya</option>
+                                <option value="Mr.Vishnuvaigundavasan">Mr.Vishnuvaigundavasan</option>
+                                <option value="Mr.Shanmugam">Mr.Shanmugam</option>
+                                <option value="Mr.Amarnath">Mr.Amarnath</option>
+                                <option value="Mrs.Dhamayanthi">Mrs.Dhamayanthi</option>
+                                <option value="Mr.Gnanajanathan M S">Mr.Gnanajanathan M S</option>
+                                <option value="Mr.Hariprasaadh A R">Mr.Hariprasaadh A R</option>
+                                <option value="Mr.Bharathkumar">Mr.Bharathkumar</option>
+                                <option value="Mrs.Krishnaveni">Mrs.Krishnaveni</option>
+                                <option value="Mr.Umapathy N">Mr.Umapathy N</option>
+                                <option value="Mr.Ganeshkumar S">Mr.Ganeshkumar S</option>
+                                <option value="Mrs.Shanthi">Mrs.Shanthi</option>
+                                <option value="Miss.Prithvi">Miss.Prithvi</option>
+                                <option value="Mrs.Roopa">Mrs.Roopa</option>
+                                <option value="Miss.Arunadevi">Miss.Arunadevi</option>
+                                <option value="Miss.Kanmani S">Miss.Kanmani S</option>
+                                <option value="Mrs.Deepa">Mrs.Deepa</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Meeting Place*</label>
+                            <select class="form-control" id="place" placeholder="SelectPlace">
+                                <option value="">Select Place</option>
+                                <option value="Udumalpet">Udumalpet</option>
+                                <option value="Pollachi">Pollachi</option>
+                                <option value="Tiruppur">Tiruppur</option>
+                                <option value="Coimbatore">Coimbatore</option>
+                                <option value="Chennai">Chennai</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Message*</label>
+                            <textarea id="message" class="form-control" placeholder="Purpose of meeting"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="apply()" data-dismiss="modal" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script language="javascript">
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let getDaysInMonth = function (month, year) {
+            //console.log(month, year)
+            return new Date(year, month, 0).getDate();
+        };
+
+
+        function range(start, end) {
+            return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
+        }
+
+        function nextMonth() {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear += 1;
+            } else {
+                currentMonth += 1;
+            }
+            myFunction();
+        }
+
+        function prevMonth() {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear -= 1;
+            } else {
+                currentMonth -= 1;
+            }
+            myFunction();
+        }
+
+        const todayDate = new Date();
+        const actualCurrentMonth = todayDate.getMonth();
+        const actualCurrentYear = todayDate.getFullYear();
+        const actualCurrentDay = todayDate.getDate();
+
+        let currentMonth = todayDate.getMonth();
+        let currentYear = todayDate.getFullYear();
+
+        function myFunction() {
+            if (actualCurrentMonth == currentMonth && actualCurrentYear == currentYear) {
+                document.getElementById("page-left").onclick = null;
+            } else {
+                document.getElementById("page-left").onclick = prevMonth;
+            }
+
+            document.getElementById("monthYear").innerHTML = monthNames[currentMonth] + " " + currentYear;
+
+            let table = document.getElementById("cable");
+            table.innerHTML = "";
+            let b = 0;
+
+            let monthDays = getDaysInMonth(parseInt(currentMonth) + 1, 2019);
+            //console.log("monthDays : " + monthDays);
+
+            let a = range(1, monthDays);
+            //console.log(a)
+
+
+            //console.log(actualCurrentDay)
+            for (i = 0; i < a.length / 7; i++) {
+                let row = table.insertRow(i);
+                for (j = 0; j < 7; j++) {
+                    // //console.log("i", i, "j", j, "i+j", i + j, "b", b)
+                    if (a[i + j + b] != undefined) {
+                        let cell1 = row.insertCell(j);
+                        let x = document.createElement("span");
+                        x.className = (parseInt(a[i + j + b]) >= actualCurrentDay || parseInt(currentMonth) > parseInt(
+                                actualCurrentMonth) || parseInt(currentYear) > parseInt(actualCurrentYear)) ?
+                            "numberCircle" : "unCircle";
+                        x.innerHTML = a[i + j + b];
+                        cell1.append(x);
+                        cell1.onclick = function () {
+                            getval(this)
+                        };
+                    }
+                }
+                b += 6;
+
+            }
+        }
+        let values = [];
+        let selectedDate;
+        let selectedFullDate;
+        let gslot;
+        let gcurrent;
+        let bookings = [];
+
+        function getval(cel) {
+            $("#appoint-list").hide();
+            selectedDate = cel.getElementsByTagName('span')[0].innerHTML;
+            //console.log(currentMonth, actualCurrentMonth)
+
+            if (parseInt(selectedDate) >= actualCurrentDay || parseInt(currentMonth) > parseInt(actualCurrentMonth) ||
+                parseInt(currentYear) > parseInt(actualCurrentYear)) {
+                $("#spin").show();
+                selectedFullDate = "2019-" + (parseInt(currentMonth) + 1) + "-" + selectedDate;
+                getDaySlots({
+                    date: selectedFullDate
+                });
+                values.push(cel.innerHTML);
+                let x = document.getElementById("dno");
+                x.innerHTML = "Available Appointments on " + selectedFullDate.split("-").reverse().join("/");
+            }
+        }
+
+        let slots = {
+            "s1": "8AM  - 10AM",
+            "s2": "10AM - 12PM",
+            "s3": "2PM  - 4PM",
+            "s4": "4PM  - 5PM"
+        }
+
+        function popup(current, slot) {
+            let cbl = document.getElementById("titl");
+            gcurrent = current;
+            cbl.innerHTML = " Book Appointment on" + "<br/>" + selectedFullDate.split("-").reverse().join("/") + " (" +
+                slots[slot] + ")";
+            gslot = slot;
+            //console.log(selectedDate, slot);
+        }
+
+        function apply() {
+
+            let ipname = document.getElementById("name").value;
+            let ipmob = document.getElementById("mob").value;
+            let ipemail = document.getElementById("email").value;
+            let ipmessage = document.getElementById("message").value;
+            let ipperson = document.getElementById("person").value;
+            let ipplace = document.getElementById("place").value;
+
+            //console.log(selectedDate, gslot, ipname, ipmob, ipemail, ipmessage, ipperson, ipplace);
+
+
+            addAppoint({
+                date: selectedFullDate,
+                slot: gslot,
+                name: ipname,
+                mobile: ipmob,
+                email: ipemail,
+                message: ipmessage,
+                person: ipperson,
+                place: ipplace
+            });
+
+            document.getElementById("name").value = "";
+            document.getElementById("mob").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+            document.getElementById("person").value = "";
+            document.getElementById("place").value = "";
+
+            gcurrent.disabled = true;
+
+            if (gslot === 's1') {
+                bookings[0] = true;
+            } else if (gslot === 's2') {
+                bookings[1] = true;
+            } else if (gslot === 's3') {
+                bookings[2] = true;
+            } else if (gslot === 's4') {
+                bookings[3] = true;
+            }
+
+        }
+
+        function addAppoint(oswa) {
+            //console.log(oswa)
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let resp = JSON.parse(this.response);
+
+                    if (resp.status) {
+                        $("#" + gslot).addClass("unbtn");
+                        $("#" + gslot).html("Unavailable");
+                        $("#" + gslot).attr("disabled", true);
+                    } else {
+
+                    }
+
+                }
+            };
+            xhttp.open("POST", "http://ilfdemo.dotkiwis.com/calbackend/add_new_cal_appointment.php", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+
+            xhttp.send(JSON.stringify(oswa));
+        }
+
+        function getDaySlots(data) {
+            console.log(data)
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = ""; //this.response;
+                    bookings = JSON.parse(this.response);
+                    console.log(bookings);
+
+                    for (i = 0; i < bookings.length; i++) {
+                        if (bookings[i]) {
+                            $("#s" + (i + 1)).addClass("unbtn");
+                            $("#s" + (i + 1)).html("Unavailable");
+                            $("#s" + (i + 1)).attr("disabled", true);
+                        } else {
+                            $("#s" + (i + 1)).removeClass("unbtn");
+                            $("#s" + (i + 1)).html("BOOK APPOINTMENT");
+                            $("#s" + (i + 1)).attr("disabled", false);
+
+                        }
+                    }
+                }
+
+            };
+            xhttp.open("POST", "http://ilfdemo.dotkiwis.com/calbackend/get_available_slots.php", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+
+            xhttp.send(JSON.stringify(data));
+
+            setTimeout(() => {
+                $("#spin").hide();
+
+                $("#appoint-list").fadeIn(1000);
+            }, 2000)
+        }
+
+
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            let d = new Date();
+            let n = d.getMonth();
+
+            myFunction();
+        });
+    </script>
+
+</body>
+
+</html>

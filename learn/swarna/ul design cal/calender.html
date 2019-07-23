@@ -239,31 +239,16 @@
     var gcurrent;
     var values = [];
     var bookedTime = [];
-    var bookings = [{
-      date: 1,
-      slots: [false, false, false, false],
-    }, {
-      date: 2,
-      slots: [false, false, false, false],
-    }, {
-      date: 3,
-      slots: [false, false, false, false],
-    }, {
-      date: 4,
-      slots: [false, false, false, false],
-    }]
 
     function getval(cel) {
       date = cel.getElementsByTagName('span')[0].innerHTML;
+      getDaySlots({
+        date: "2019-06-29"
+      });
+
 
       console.log(date)
-      console.log(bookings[date - 1]);
-      var buttonState = bookings[date - 1].slots;
-      console.log(buttonState);
-      document.getElementById('s1').disabled = buttonState[0];
-      document.getElementById('s2').disabled = buttonState[1];
-      document.getElementById('s3').disabled = buttonState[2];
-      document.getElementById('s4').disabled = buttonState[3];
+
 
       values.push(cel.innerHTML);
       console.log(values);
@@ -279,7 +264,8 @@
 
     function popup(current, slot) {
       var cbl = document.getElementById("titl");
-      gcurrent = current;
+
+
       cbl.innerHTML = date + " " + slot;
       gslot = slot;
       console.log(date, slot);
@@ -318,28 +304,41 @@
     }
 
 
-    function addAppoint(obj) {
+    function addAppoint(oswa) {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML = this.responseText;
+          document.getElementById("demo").innerHTML = this.response;
         }
       };
       xhttp.open("POST", "http://127.0.0.1/db/add_new_appointment.php", true);
       xhttp.setRequestHeader("Content-Type", "application/json");
 
-      xhttp.send(JSON.stringify(obj));
+      xhttp.send(JSON.stringify(oswa));
+    }
+
+    function getDaySlots(data) {
+      console.log(data)
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML = this.response;
+          let resp = JSON.parse(this.response);
+          console.log(resp);
+          document.getElementById('s1').disabled = resp[0];
+          document.getElementById('s2').disabled = resp[1];
+          document.getElementById('s3').disabled = resp[2];
+          document.getElementById('s4').disabled = resp[3];
+
+        }
+      };
+      xhttp.open("POST", "http://127.0.0.1/db/get_available_slots.php", true);
+      xhttp.setRequestHeader("Content-Type", "application/json");
+
+      xhttp.send(JSON.stringify(data));
     }
   </script>
 
 </body>
 
 </html>
-<!--
-    tbl.rows[i].cells[j].onclick = function () { getval(this); };
-            }
-        }
-        function getval(cel) {
-            alert(cel.innerHTML);
-        }
--->

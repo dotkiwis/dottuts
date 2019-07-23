@@ -2,8 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-
-$mysqli = mysqli_connect("localhost", "root", "", "appointment");
+$mysqli = mysqli_connect("localhost", "dotkiwis_wp9", "C.wNnTUO5LT0w4YVWKr68", "dotkiwis_wp9");
 if (!$mysqli) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -12,11 +11,11 @@ $json_str = file_get_contents('php://input');
     
 $data = json_decode($json_str);
 $date = $data -> date;  
-$getinfo = "select * from appointments where date='". $date ."'";
+$getinfo = "select * from wp_appointment where date='". $date ."'";
 // echo $getinfo;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
 
-$response = array(false,false,false,false);
+$a = array(false,false,false,false);
 
 if ($result = $mysqli->query($getinfo)) { 
 
@@ -24,23 +23,23 @@ if ($result = $mysqli->query($getinfo)) {
         $slot = $row->slot;
 
         if($slot == "s1") {
-            $response[0] = true;
+            $a[0] = true;
         }
         if($slot == "s2") {
-            $response[1] = true;
+            $a[1] = true;
         }
         if($slot == "s3") {
-            $response[2] = true;
+            $a[2] = true;
         }
         if($slot == "s4") {
-            $response[3] = true;
+            $a[3] = true;
         }
         
 
-       // array_push($response, $myObj);
+       // array_push($a, $myObj);
     }
 
-    echo json_encode($response);
+    echo json_encode($a);
 
 
 } 
